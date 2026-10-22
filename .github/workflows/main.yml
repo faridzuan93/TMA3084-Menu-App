@@ -1,7 +1,6 @@
 
 name: Flutter CI
 
-
 on:
   pull_request:
     branches:
@@ -11,7 +10,6 @@ on:
       - main
       - feature/menu
 
-
 jobs:
   build:
     name: Analyze and test Flutter app
@@ -20,6 +18,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref }}
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
